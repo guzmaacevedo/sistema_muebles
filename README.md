@@ -31,4 +31,4 @@ python app.py
 ```
 
 ## Author
-Jose Guzman
+Jose Guzman (guzmaacevedo@gmail.com)
