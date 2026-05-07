@@ -1,34 +1,34 @@
-# Sistema de Gestión de Muebles
+# Furniture Management System
 
-Sistema web desarrollado con Flask para la gestión de inventario y fabricación de muebles
+A web application developed with Flask for furniture inventory and manufacturing management
 
-## Funciones
-- Registro de insumos
-- Registro de productos
-- Gestión de recetas
-- Fabricación de productos
-- Registro de ventas
-- Historial de ventas
+## Features
+- Raw material tracking
+- Product tracking
+- Recipe management
+- Product manufacturing
+- Sales recording 
+- Sales history
 
-## Tecnologías usadas
+## Technologies used
 - Python
 - Flask
 - SQLite
 - HTML
 
-## Cómo ejecutar el proyecto
+## How to run the project
 
-Instalar dependencias:
+Install dependencies:
 
 ```bash
 pip install flask flask-sqlalchemy flask-migrate pytz
 ```
 
-Ejecutar:
+Run:
 
 ```bash
 python app.py
 ```
 
-## Autor
+## Author
 Jose Guzman
