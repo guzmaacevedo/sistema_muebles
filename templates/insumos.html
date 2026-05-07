@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insumos</title>
+</head>
+<body>
+    <h1>Lista de Insumos</h1>
+    <a href="/">Volver al Inicio</a> | 
+    <a href="/agregar_insumo">Agregar Nuevo Insumo</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Unidad</th>
+                <th>Stock Actual</th>
+                <th>Stock Mínimo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for insumo in insumos %}
+            <tr>
+                <td>{{ insumo.nombre }}</td>
+                <td>{{ insumo.unidad }}</td>
+                <td>{{ insumo.stock }}</td>
+                <td>{{ insumo.stock_minimo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

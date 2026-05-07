@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Receta - {{ producto.nombre }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h1>Editar Receta para: {{ producto.nombre }}</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="hidden" name="volver_a" value="{{ volver_a }}">
+        <h4>Insumos Actuales</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Insumo</th>
+                    <th>Cantidad</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receta in producto.recetas %}
+                <tr>
+                    <td>{{ receta.insumo.nombre }}</td>
+                    <td>
+                        <input type="number" step="0.01" name="cantidad_{{ receta.insumo.id }}" class="form-control" value="{{ receta.cantidad }}" required>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="eliminar_insumo" value="{{ receta.insumo.id }}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h4 class="mt-4">Agregar nuevo insumo</h4>
+        <div class="row g-2">
+            <div class="col-md-6">
+                <select name="nuevo_insumo" class="form-select">
+                    <option value="">-- Seleccionar Insumo --</option>
+                    {% for insumo in insumos %}
+                        {% if insumo.id not in producto.recetas|map(attribute='insumo_id') %}
+                        <option value="{{ insumo.id }}">{{ insumo.nombre }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="number" step="0.01" name="nueva_cantidad" class="form-control" placeholder="Cantidad">
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            
+        </div>
+    </form>
+    <a href="{{ volver_a }}" class="btn btn-secondary mt-3">Volver</a>
+</body>
+</html>

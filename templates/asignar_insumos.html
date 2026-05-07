@@ -1,0 +1,9 @@
+<h2>Asignar Insumos a {{ producto.nombre }}</h2>
+<form method="POST">
+    {% for insumo in insumos %}
+        <label>{{ insumo.nombre }} ({{ insumo.unidad }}):</label>
+        <input type="number" step="0.01" name="insumo_{{ insumo.id }}">
+        <br>
+    {% endfor %}
+    <button type="submit">Guardar receta</button>
+</form>
